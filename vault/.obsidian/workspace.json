@@ -1,0 +1,205 @@
+{
+  "main": {
+    "id": "a656129e0b6e3c8f",
+    "type": "split",
+    "children": [
+      {
+        "id": "ff1d06fe34a4b29b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "65d3b1b7cb3e8113",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "10680cac2252df72",
+    "type": "split",
+    "children": [
+      {
+        "id": "404beb78527cca8a",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "fc3b14d5b7a88a5b",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "689eb75d9d0a220a",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "66bf7b778b48f683",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "e7a4206c60e6cffe",
+    "type": "split",
+    "children": [
+      {
+        "id": "03b4f9ae5e2c6fd3",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "90b50dcba7170093",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks"
+            }
+          },
+          {
+            "id": "bc84f6ca51f57aeb",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links"
+            }
+          },
+          {
+            "id": "886eb62bd5e007a7",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "7f7a631dbfa0c1d3",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "ce46d43909ce8cf6",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "65d3b1b7cb3e8113",
+  "lastOpenFiles": [
+    "index.md",
+    "wiki/AI Agents Answer Action.md",
+    "wiki/Markdown System Prompts Llms.md",
+    "wiki/LlM Agents Architecture.md",
+    "wiki/Ai Agents Answers Actions.md",
+    "wiki/Llms Behavior Prompting Retrieval.md",
+    "wiki/Frontend-To-Deployment.md",
+    "wiki/Code Programming Foundations Ai.md",
+    "raw/From Zero to AI Agents — Seven-Class Edition – Class 1_ Code & Programming Foundations.pdf",
+    "wiki/AI Fundamentals Lecture.md",
+    "wiki/LLM Training Fundamentals.md",
+    "wiki/LLM Behavior Prompting Retrieval.md",
+    "wiki/Code Foundations AI Agents.md",
+    "wiki/LLM Prompting Local Training.md",
+    "wiki/LLM Agent Automation Architecture.md",
+    "wiki/Code Foundations Ai Agents.md",
+    "wiki/Ai Fundamentals Lecture.md",
+    "wiki/Ai Agents Answer Action.md"
+  ]
+}

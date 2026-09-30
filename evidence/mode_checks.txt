@@ -1,0 +1,113 @@
+MODE BOUNDARY CHECKS — Personal Wiki (Assignment 4)
+Date: 2026-09-29
+Model: gemma3:4b via Ollama | Retrieval: BM25
+
+════════════════════════════════════════════════════════════
+CHECK 1: chat → "what can you help me with?" → capabilities explained, NO retrieval
+════════════════════════════════════════════════════════════
+
+Command: echo "what can you help me with?" | python3 wiki.py chat
+
+Response:
+  I can help you with a few things related to Agentic AI coursework! Specifically, I can:
+  - Brainstorm: Generate ideas for projects, papers, and experiments related to agentic
+    systems, RAG, LLMs, and multi-agent frameworks.
+  - Draft: Write or outline essays, code documentation, study guides, and presentations
+    based on course material.
+  - Plan: Create study schedules, project timelines, and task breakdowns for assignments.
+  - Explain: Clarify concepts from notes and lectures in plain language.
+  - Discuss: Engage in open-ended conversation about AI trends, architectures, and research.
+
+RESULT: PASS
+  - "what can you help me with?" contains no factual keywords → no retrieval triggered
+  - Response describes capabilities from persona.md, not retrieved notes
+
+════════════════════════════════════════════════════════════
+CHECK 2: chat → draft request → "make that shorter" → history used, not re-retrieval
+════════════════════════════════════════════════════════════
+
+Command: printf "draft a one sentence summary of what RAG is\nmake that shorter\nexit\n" | python3 wiki.py chat
+
+Turn 1 — User: "draft a one sentence summary of what RAG is"
+Response:
+  RAG, or Retrieval-Augmented Generation, is a technique where a language model retrieves
+  relevant information from external sources like documents to enhance its responses.
+
+Turn 2 — User: "make that shorter"
+Response:
+  RAG combines LLMs with retrieved knowledge for more informed responses.
+
+RESULT: PASS
+  - "make that shorter" has no factual keywords → no new retrieval call
+  - Model used the prior turn's draft from chat_history.json to shorten it
+  - Conversation continuity confirmed across turns
+
+════════════════════════════════════════════════════════════
+CHECK 3: search → raw passages only, no generated answer
+════════════════════════════════════════════════════════════
+
+Command: python3 wiki.py search "agent memory"
+
+Output: 5 ranked passages with scores, source paths, section names, and text previews.
+No model call. No generated answer. No Ollama request made.
+
+Top result: Score 4.8245 | Source: vault/raw/Meeting Title: Markdown, system prompts.md
+
+RESULT: PASS
+  - search_mode.py confirmed: no call to call_gemma()
+  - Output is raw BM25 retrieval only
+
+════════════════════════════════════════════════════════════
+CHECK 4: ask → standalone answer with citations, no chat history imported
+════════════════════════════════════════════════════════════
+
+Command: python3 wiki.py ask "What is a harness in the context of AI agents?"
+
+Answer:
+  A harness, in the context of AI agents, is the software that manages the model [1, 2].
+  It assembles model input from system prompts, project instructions, and conversation data
+  [2]. It calls the model, validates actions, executes tools, collects outputs, and feeds
+  them into the next model input [2]. It also manages state, logs, budgets, and stopping
+  rules [2].
+
+Sources cited:
+  - vault/raw/Meeting Title: LLM agents, harnesses.md
+  - vault/raw/From Zero to AI Agents — Seven-Class Edition – Class 6_ Agents, Harnesses & Execution.pdf
+
+Evidence card saved: ask_20260929_175404_what_is_a_harness_in_the_context_of_ai_a.json
+
+RESULT: PASS
+  - Answer is grounded in retrieved notes with inline [1,2] citations
+  - No chat_history.json consulted — ask mode is stateless by design
+  - Evidence card saved independently
+
+════════════════════════════════════════════════════════════
+CHECK 5: claim made only in chat does NOT appear as source evidence in ask mode
+════════════════════════════════════════════════════════════
+
+Step A — Plant a fake claim in chat:
+  Command: printf "the professor's name is Dr. Quantum Flamingo\nexit\n" | python3 wiki.py chat
+  Response: "Okay, noted! Dr. Quantum Flamingo it is."
+  → claim stored in chat_history.json only
+
+Step B — Ask mode query for that same claim:
+  Command: python3 wiki.py ask "What is the professor's name?"
+  Answer: "Insufficient evidence in the available notes to answer this question."
+  Evidence card saved: ask_20260929_175423_what_is_the_professor_s_name.json
+
+RESULT: PASS
+  - ask mode reads only BM25 index (data/chunks.json) — not chat_history.json
+  - "Dr. Quantum Flamingo" not in any source file → correctly returned insufficient evidence
+  - Mode isolation confirmed: chat context never contaminates ask-mode retrieval
+
+════════════════════════════════════════════════════════════
+SUMMARY
+════════════════════════════════════════════════════════════
+
+Check 1  chat capabilities         PASS  no retrieval on casual query
+Check 2  chat conversation history PASS  follow-up used history, not re-retrieval
+Check 3  search raw passages       PASS  no model call, raw BM25 output only
+Check 4  ask standalone citations  PASS  grounded answer, no chat history imported
+Check 5  mode isolation            PASS  chat claim invisible to ask-mode evidence
+
+All 5 mode boundary checks passed.
